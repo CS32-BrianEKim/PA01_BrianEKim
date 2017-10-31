@@ -86,7 +86,7 @@ namespace main_savitch_15
         for (size_t i = 0; i < source.allocated; ++i)
             edges[i] = new bool[source.allocated];
 
-        labels = new Item[allocated];
+        labels = new Item[source.allocated];
 
         }
 
@@ -123,8 +123,15 @@ namespace main_savitch_15
 
         for (size_t i = 0; i < temp->many_vertices; ++i) 
             temp->labels[i] = labels[i];
+        // allocated = new_allocation;
 
+        // delete edges;
+        // delete labels;
+
+        // edges = temp->edges;
+        // labels = temp->labels;
         *this = *temp;
+
 
         delete temp;
 

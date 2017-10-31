@@ -196,9 +196,12 @@ int test2( ) {
     int vertices[25];
     for (i = 0; i < 5; i++)
         vertices[i] = i;
+    cout << "adding/checking random data in resized graph\n";
     srand (time(NULL));
     vertices[5] = 5 + rand() % 2000;
+    cout << "adding/checking random data in resized graph\n";
     g.add_vertex(vertices[5]);
+
     for (i = 6; i < 20; i++) {
         vertices[i] = vertices[i-1] + 1;
         g.add_vertex(vertices[i]);
