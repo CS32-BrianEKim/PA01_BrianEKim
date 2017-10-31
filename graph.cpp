@@ -22,7 +22,7 @@ namespace main_savitch_15
         allocated = 10;
 
         edges = new bool*[allocated];
-        for (int i = 0; i < allocated; ++i)
+        for (size_t i = 0; i < allocated; ++i)
             edges[i] = new bool[allocated];
 
         labels = new Item[allocated];
@@ -32,7 +32,7 @@ namespace main_savitch_15
         allocated = initial_allocation;
 
         edges = new bool*[allocated];
-        for (int i = 0; i < allocated; ++i)
+        for (size_t i = 0; i < allocated; ++i)
             edges[i] = new bool[allocated];
 
         labels = new Item[allocated];
@@ -44,25 +44,25 @@ namespace main_savitch_15
         many_vertices = source.many_vertices;
 
         edges = new bool*[allocated];
-        for (int i = 0; i < allocated; ++i)
+        for (size_t i = 0; i < allocated; ++i)
             edges[i] = new bool[allocated];
 
         labels = new Item[allocated];
 
-        for (int i = 0; i < many_vertices; ++i) {
-            for (int j = 0; j < many_vertices; ++j) {
+        for (size_t i = 0; i < many_vertices; ++i) {
+            for (size_t j = 0; j < many_vertices; ++j) {
                 edges[i][j] = source.edges[i][j];
             }
         }
 
-        for (int i = 0; i < many_vertices; ++i) 
+        for (size_t i = 0; i < many_vertices; ++i) 
             labels[i] = source.labels[i];
 
     }
 
     template<class Item>
     graph<Item>::~graph() {
-        for (int i = 0; i < allocated; ++i)
+        for (size_t i = 0; i < allocated; ++i)
             delete [] edges[i];
 
         delete [] edges;   
@@ -75,7 +75,7 @@ namespace main_savitch_15
         if (this == &source)
             return *this;
         if (allocated != source.allocated) { 
-            for (int i = 0; i < allocated; ++i)
+            for (size_t i = 0; i < allocated; ++i)
                 delete [] edges[i];
 
             delete [] edges;   
@@ -83,7 +83,7 @@ namespace main_savitch_15
             delete [] labels; 
 
         edges = new bool*[source.allocated];
-        for (int i = 0; i < source.allocated; ++i)
+        for (size_t i = 0; i < source.allocated; ++i)
             edges[i] = new bool[source.allocated];
 
         labels = new Item[allocated];
@@ -93,13 +93,13 @@ namespace main_savitch_15
         allocated = source.allocated;
         many_vertices = source.many_vertices;
 
-        for (int i = 0; i < many_vertices; ++i) {
-            for (int j = 0; j < many_vertices; ++j) {
+        for (size_t i = 0; i < many_vertices; ++i) {
+            for (size_t j = 0; j < many_vertices; ++j) {
                 edges[i][j] = source.edges[i][j];
             }
         }
 
-        for (int i = 0; i < many_vertices; ++i) 
+        for (size_t i = 0; i < many_vertices; ++i) 
             labels[i] = source.labels[i];
 
         return *this;
@@ -115,13 +115,13 @@ namespace main_savitch_15
         temp = new graph(new_allocation);
         temp->many_vertices = many_vertices;
 
-        for (int i = 0; i < many_vertices; ++i) {
-            for (int j = 0; j < many_vertices; ++j) {
+        for (size_t i = 0; i < many_vertices; ++i) {
+            for (size_t j = 0; j < many_vertices; ++j) {
                 temp->edges[i][j] = edges[i][j];
             }
         }
 
-        for (int i = 0; i < temp->many_vertices; ++i) 
+        for (size_t i = 0; i < temp->many_vertices; ++i) 
             temp->labels[i] = labels[i];
 
         *this = *temp;
