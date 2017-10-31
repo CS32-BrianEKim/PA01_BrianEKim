@@ -226,12 +226,12 @@ int test2( ) {
         vertices[i] = vertices[i-1] + 1;
         g.add_vertex(vertices[i]);
     }
-    cout << "------------------CHECKPOINT------------------\n";
+
     if (g.size() != 25) {
         cout << "graph size should be 25; is " << g.size() << endl;
         return 0;
     }
-    cout << "------------------CHECKPOINT------------------\n";
+
     if (!okayVerts(g, 25, vertices)
         || !okayEdges(g, 20, 25, &edges[0][0]))
         return 0;
@@ -372,14 +372,14 @@ int test5( ) {
     graph<int> gcopy;
     cout << "assigning random graph to existing one, and checking\n";
     gcopy = g;
-    cout << "------------------CHECKPOINT------------------\n";
+
 
     if (g.size() != gcopy.size()) {
         cout << "copy size is " << gcopy.size()
         << ", but original size is " << g.size() << endl;
         return 0;
     }
-    cout << "------------------CHECKPOINT------------------\n";
+
     if (!okayVerts(gcopy, MEDIUM, vertices)
         || !okayEdges(gcopy, MEDIUM, MEDIUM, &edges[0][0]))
         return 0;
